@@ -7,14 +7,15 @@ import (
     "io/ioutil"
     "encoding/json"
     "sort"
+    "html/template"
 )
 
 type Post struct {
-    Title     string `json:"title"`
-    Body      string `json:"body"`
-    Slug      string `json:"slug"`
-    CreatedAt string `json:"createdAt"`
-    Mtime     int64  `json:"mtime"`
+    Title     string        `json:"title"`
+    Body      template.HTML `json:"body"`
+    Slug      string        `json:"slug"`
+    CreatedAt string        `json:"createdAt"`
+    Mtime     int64         `json:"mtime"`
 }
 
 func main() {
@@ -36,7 +37,6 @@ func main() {
     m.Run()
 }
 
-// sort posts by mtime
 type ByMtime []*Post
 
 func (a ByMtime) Len() int      { return len(a) }
