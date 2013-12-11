@@ -14,14 +14,12 @@
 
 <h2>Posts</h2>
 <div>
-  {{range .posts}}
+  {{range .}}
 
-  {{ with . }}
   <div>
     <div class="ilb lh1 datestamp">{{.CreatedAt}}</div>
     <div class="ilb lh1"><a href="/{{.Slug}}">{{.Title}}</a></div>
   </div>
-  {{end}}
 
   {{end}}
 </div>
