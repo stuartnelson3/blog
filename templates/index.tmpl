@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{.title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/styles/vibrant-ink.css">
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/public/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <h1>Stuart Nelson</h1>
+
+      <div>
+        <img class="profile-picture" src="/public/img/profile_bw.jpg" />
+        <div class="about lh1">
+          <div>
+            I work at <a href="http://www.neo.com"><strong>Neo</strong></a>
+          </div>
+          <div>
+            You can find me on <a href="http://www.twitter.com/stuartnelson3"><strong>Twitter</strong></a> and <a href="http://www.github.com/stuartnelson3"><strong>Github</strong></a>
+          </div>
+        </div>
+      </div>
+
+      <h2>Posts</h2>
+      <div>
+        {{range .posts}}
+
+        {{ with . }}
+        <div>
+          <div class="ilb lh1 datestamp">{{.CreatedAt}}</div>
+          <div class="ilb lh1"><a href="/{{.Slug}}">{{.Title}}</a></div>
+        </div>
+        {{end}}
+
+        {{end}}
+      </div>
+
+    </div>
+  </body>
+</html>
