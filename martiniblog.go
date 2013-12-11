@@ -28,6 +28,11 @@ func main() {
         r.HTML(200, "index", posts)
     })
 
+    m.Get("/:post", func(params martini.Params, r render.Render) {
+        post := Post{}.Find(params["post"])
+        r.HTML(200, "show", post)
+    })
+
     m.Run()
 }
 
@@ -51,4 +56,12 @@ func (p Post) All() []*Post {
     }
     sort.Sort(ByMtime(posts))
     return posts
+}
+
+func (p Post) Find(cond string) *Post {
+    var post = &Post{}
+    absPath, _ := filepath.Abs("posts/" + cond + ".json")
+    data, _ := ioutil.ReadFile(absPath)
+    json.Unmarshal(data, post)
+    return post
 }
