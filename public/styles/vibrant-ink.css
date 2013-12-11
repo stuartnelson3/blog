@@ -1,0 +1,70 @@
+/* Taken from the popular Visual Studio Vibrant Ink Schema */
+
+pre { background-color: #333333; color: #ffffff; padding: 10px; border-radius: 4px; overflow: scroll; }
+.keyword {  color: #CC7832; }
+.atom { color: #FC0; }
+.number { color:  #FFEE98; }
+.def { color: #8DA6CE; }
+
+.title { color: #FFC66D; }
+
+.operator { color: #888; }
+.comment { color: #666666; font-style: italic; }
+.string { color:  #A5C25C }
+.string-2 { color: red }
+.meta { color: #D8FA3C; }
+.error { border-bottom: 1px solid red; }
+.builtin { color: #8DA6CE; }
+.tag { color: #8DA6CE; }
+.attribute { color: #8DA6CE; }
+.header { color: #FF6400; }
+.hr { color: #AEAEAE; }
+.link { color: blue; }
+
+
+pre .code,
+pre .class .title,
+.ruby .constant,
+pre .header {
+  color: #A5C25C;
+}
+
+pre .link_label,
+pre .attribute,
+pre .haskell .type,
+pre .symbol,
+pre .symbol .string,
+pre .value,
+pre .regexp {
+  color: #8DA6CE
+}
+
+pre .label,
+pre .javadoc,
+pre .decorator,
+pre .filter .argument,
+pre .localvars,
+pre .array,
+pre .attr_selector,
+pre .important,
+pre .pseudo,
+pre .pi,
+pre .haml .bullet,
+pre .doctype,
+pre .deletion,
+pre .envvar,
+pre .shebang,
+pre .apache .sqbracket,
+pre .nginx .built_in,
+pre .tex .formula,
+pre .erlang_repl .reserved,
+pre .prompt,
+pre .asciidoc .link_label,
+pre .markdown .link_label,
+pre .vhdl .attribute,
+pre .clojure .attribute,
+pre .asciidoc .attribute,
+pre .lasso .attribute,
+pre .coffeescript .property {
+  color: #88F
+}
