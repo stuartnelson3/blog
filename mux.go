@@ -30,7 +30,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     data, _ := ioutil.ReadFile(absPath)
     out := &Post{}
     json.Unmarshal(data, out)
-    t, _ := template.New("foo").Parse(`{{define "T"}}{{.}}{{end}}`)
+    t, _ := template.New("root").Parse(`{{define "T"}}{{.}}{{end}}`)
     _ = t.ExecuteTemplate(w, "T", out.Body)
 }
 
