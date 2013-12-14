@@ -58,9 +58,9 @@ func (p Post) All() []*Post {
     return posts
 }
 
-func (p Post) Find(cond string) *Post {
+func (p Post) Find(slug string) *Post {
     var post = &Post{}
-    absPath, _ := filepath.Abs("posts/" + cond + ".json")
+    absPath, _ := filepath.Abs("posts/" + slug + ".json")
     data, _ := ioutil.ReadFile(absPath)
     json.Unmarshal(data, post)
     return post
