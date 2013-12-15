@@ -1,12 +1,21 @@
 /* Taken from the popular Visual Studio Vibrant Ink Schema */
 
 pre { background-color: #333333; color: #ffffff; padding: 10px; border-radius: 4px; overflow: scroll; }
-.keyword {  color: #CC7832; }
+
+.keyword,
+.built_in {
+  color: #CC7832;
+}
+
 .atom { color: #FC0; }
 .number { color:  #FFEE98; }
 .def { color: #8DA6CE; }
 
-.title { color: #FFC66D; }
+.go .keyword,
+.parent,
+.title {
+  color: #FFC66D;
+}
 
 .operator { color: #888; }
 .comment { color: #666666; font-style: italic; }
@@ -30,6 +39,7 @@ pre .header {
 }
 
 pre .link_label,
+pre .typename,
 pre .attribute,
 pre .haskell .type,
 pre .symbol,
