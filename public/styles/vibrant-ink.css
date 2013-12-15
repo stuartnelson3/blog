@@ -1,6 +1,12 @@
 /* Taken from the popular Visual Studio Vibrant Ink Schema */
 
-pre { background-color: #333333; color: #ffffff; padding: 10px; border-radius: 4px; overflow: scroll; }
+pre {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: scroll;
+}
 
 .keyword,
 .built_in {
@@ -30,6 +36,7 @@ pre { background-color: #333333; color: #ffffff; padding: 10px; border-radius: 4
 .hr { color: #AEAEAE; }
 .link { color: blue; }
 
+.substr { color: #FFFFFF; }
 
 pre .code,
 pre .class .title,
