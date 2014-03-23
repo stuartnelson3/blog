@@ -85,3 +85,10 @@ body {
   max-width: 215px;
   font-size: 130%;
 }
+
+:not(pre) > code {
+  border: 1px solid #ccc;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
