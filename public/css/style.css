@@ -91,4 +91,6 @@ body {
   padding: 1px 5px;
   border-radius: 4px;
   background-color: #f1f1f1;
+  position: relative;
+  bottom: 1px;
 }
