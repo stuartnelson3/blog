@@ -5,6 +5,7 @@ pre {
   color: #ffffff;
   padding: 10px;
   border-radius: 4px;
+  overflow-x: scroll;
 }
 
 .keyword,
