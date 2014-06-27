@@ -26,13 +26,11 @@ func main() {
 		Extensions: []string{".html"}}))
 
 	m.Get("/", func(r render.Render) {
-		posts := Post{}.All()
-		r.HTML(200, "index", posts)
+		r.HTML(200, "index", Post{}.All())
 	})
 
 	m.Get("/:post", func(params martini.Params, r render.Render) {
-		post := Post{}.Find(params["post"])
-		r.HTML(200, "show", post)
+		r.HTML(200, "show", Post{}.Find(params["post"]))
 	})
 
 	m.Run()
@@ -47,13 +45,13 @@ func (a ByMtime) Less(i, j int) bool {
 }
 
 func (p Post) All() []*Post {
-	var posts []*Post
 	matches, _ := filepath.Glob("posts/*.json")
-	for i := 0; i < len(matches); i++ {
+	posts := make([]*Post, len(matches))
+	for i, match := range matches {
 		var post = &Post{}
-		data, _ := ioutil.ReadFile(matches[i])
+		data, _ := ioutil.ReadFile(match)
 		json.Unmarshal(data, post)
-		posts = append(posts, post)
+		posts[i] = post
 	}
 	sort.Sort(ByMtime(posts))
 	return posts
