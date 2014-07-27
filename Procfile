@@ -1,1 +1,1 @@
-web: blog
+web: blog -p $PORT
