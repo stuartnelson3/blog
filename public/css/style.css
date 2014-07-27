@@ -3,7 +3,10 @@ body {
   margin: 0;
   padding: 0;
   color: #606060;
+  margin: auto;
+  width: 960px;
 }
+
 
 h1, h2, blockquote p {
   color: #404040;
@@ -39,19 +42,19 @@ p {
   line-height: 1.8;
 }
 
-body {
-  margin: auto;
-  width: 96%;
+.posts {
+  list-style-type: none;
+  padding: 0;
+}
+
+.posts li {
+  line-height: 1.8;
+  margin-bottom: 10px;
 }
 
 .container {
-  margin: 40px auto 10px;
-  max-width: 720px;
-  width: 90%;
-}
-
-.date {
-  font-size: 80%;
+  margin: 60px auto 100px;
+  max-width: 760px;
 }
 
 .ilb {
@@ -67,7 +70,7 @@ body {
 }
 
 .datestamp {
-  margin-right: 1%;
+  margin-right: 5px;
   width: 120px;
 }
 
@@ -82,7 +85,7 @@ body {
 .about {
   display: inline-block;
   margin: 45px 0;
-  max-width: 215px;
+  max-width: 235px;
   font-size: 130%;
 }
 
