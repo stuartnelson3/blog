@@ -1,1 +1,1 @@
-web: rawblog
+web: blog
