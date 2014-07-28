@@ -22,7 +22,21 @@
   </head>
   <body>
     <div class="container">
-      {{ yield }}
+    <div>
+
+      <form method="POST" action="/new_post">
+      <strong>Title:</strong>
+      <input type="text" size="10" name="title" value="">
+
+      <strong>Body:</strong>
+      <textarea rows="20" cols="60" name="body"></textarea>
+
+      <input class="js-submit" type="submit" value="Post">
+      </form>
+      <a href="/">Cancel</a>
+    </div>
+
+    <div class="post"></div>
     </div>
   </body>
 </html>
