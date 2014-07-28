@@ -1,10 +1,14 @@
 body {
-  font-family: 'Varela Round', sans-serif;
+  font-family: Avenir, 'Varela Round', sans-serif;
   margin: 0;
   padding: 0;
   color: #111111;
   margin: auto;
   width: 960px;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 500;
 }
 
 textarea {
