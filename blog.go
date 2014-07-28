@@ -10,6 +10,8 @@ import (
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/pat"
+	"github.com/gorilla/websocket"
+	"github.com/russross/blackfriday"
 )
 
 func main() {
@@ -37,6 +39,25 @@ func main() {
 			}
 			posts = allPosts()
 			show.Execute(w, p)
+		})
+		mux.Get("/markdown_preview", func(w http.ResponseWriter, r *http.Request) {
+			ws, err := websocket.Upgrade(w, r, nil, 1024, 1024)
+			if _, ok := err.(websocket.HandshakeError); ok {
+				http.Error(w, "Not a websocket handshake", 400)
+				return
+			} else if err != nil {
+				return
+			}
+
+			for {
+				messageType, message, err := ws.ReadMessage()
+				if err != nil {
+					return
+				}
+				if err := ws.WriteMessage(messageType, blackfriday.MarkdownCommon(message)); err != nil {
+					return
+				}
+			}
 		})
 	}
 
