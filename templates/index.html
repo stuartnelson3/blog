@@ -40,17 +40,19 @@
         <div class="clearfix"></div>
       </div>
 
-      <h2>Posts</h2>
-      <ul class="posts">
-        {{range .}}
+      <div class="mt3">
+        <h2>Posts</h2>
+        <ul class="posts">
+          {{range .}}
 
-        <li>
-          <div class="datestamp">{{.CreatedAt}}</div>
-          <div><a href="/{{.Slug}}">{{.Title}}</a></div>
-        </li>
+          <li>
+            <div class="datestamp">{{.CreatedAt}}</div>
+            <div><a href="/{{.Slug}}">{{.Title}}</a></div>
+          </li>
 
-        {{end}}
-      </ul>
+          {{end}}
+        </ul>
+      </div>
     </div>
   </body>
 </html>
