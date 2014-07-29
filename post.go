@@ -42,9 +42,10 @@ func findPost(slug string) (*Post, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer f.Close()
+
 	post := &Post{}
 	json.NewDecoder(f).Decode(post)
-	f.Close()
 
 	return post, nil
 }
@@ -73,14 +74,18 @@ func (p *Post) SaveJson() error {
 	if err != nil {
 		return err
 	}
+	defer f.Close()
+
 	j, err := json.Marshal(p)
 	if err != nil {
 		return err
 	}
+
 	_, err = f.Write(j)
 	if err != nil {
 		return err
 	}
+
 	return nil
 }
 
