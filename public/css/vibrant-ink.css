@@ -2,9 +2,10 @@
 
 pre {
   background-color: #333333;
-  color: #ffffff;
-  padding: 10px;
   border-radius: 4px;
+  color: #ffffff;
+  margin: 1em 0;
+  padding: 10px;
   overflow-x: scroll;
 }
 
