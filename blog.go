@@ -16,19 +16,23 @@ import (
 
 func main() {
 	var (
-		mux        = pat.New()
-		port       = flag.String("p", "3000", "address to bind the server on")
-		dev        = flag.Bool("dev", false, "enable/disable dev mode")
-		posts      = allPosts()
-		show, _    = template.ParseFiles("./templates/show.html")
-		index, _   = template.ParseFiles("./templates/index.html")
-		newPost, _ = template.ParseFiles("./templates/new.html")
+		mux   = pat.New()
+		port  = flag.String("p", "3000", "address to bind the server on")
+		dev   = flag.Bool("dev", false, "enable/disable dev mode")
+		posts = allPosts()
+		t, _  = template.ParseFiles(
+			"./templates/header.tmpl",
+			"./templates/footer.tmpl",
+			"./templates/show.tmpl",
+			"./templates/index.tmpl",
+			"./templates/new.tmpl",
+		)
 	)
 	flag.Parse()
 
 	if *dev {
 		mux.Get("/new_post", func(w http.ResponseWriter, r *http.Request) {
-			newPost.Execute(w, nil)
+			t.ExecuteTemplate(w, "new.tmpl", nil)
 		})
 		mux.Post("/new_post", func(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(r.FormValue("title"))
@@ -38,7 +42,7 @@ func main() {
 				return
 			}
 			posts = allPosts()
-			show.Execute(w, p)
+			t.ExecuteTemplate(w, "show.tmpl", p)
 		})
 		mux.Get("/markdown_preview", func(w http.ResponseWriter, r *http.Request) {
 			ws, err := websocket.Upgrade(w, r, nil, 1024, 1024)
@@ -71,11 +75,11 @@ func main() {
 			http.Error(w, err.Error(), 404)
 			return
 		}
-		show.Execute(w, p)
+		t.ExecuteTemplate(w, "show.tmpl", p)
 	})
 
 	mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		index.Execute(w, posts)
+		t.ExecuteTemplate(w, "index.tmpl", posts)
 	})
 
 	log.Printf("Starting server on %s\n", *port)

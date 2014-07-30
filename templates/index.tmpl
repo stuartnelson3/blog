@@ -1,0 +1,32 @@
+{{template "header.tmpl"}}
+<h1>Stuart Nelson</h1>
+
+<div>
+  <div class="inline-block col-4 left">
+    <img class="profile-picture" src="public/img/profile_bw.jpg" />
+  </div>
+  <div class="about lh1 col-6 inline-block">
+    <div>
+      I work at <a href="https://www.soundcloud.com"><strong>SoundCloud</strong></a> in Berlin.
+    </div>
+    <div>
+      You can find me on <a href="http://www.twitter.com/stuartnelson3"><strong>Twitter</strong></a> and <a href="http://www.github.com/stuartnelson3"><strong>Github</strong></a>.
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="mt3">
+  <h2>Posts</h2>
+  <ul class="posts">
+    {{range .}}
+
+    <li>
+      <div class="datestamp">{{.CreatedAt}}</div>
+      <div><a href="/{{.Slug}}">{{.Title}}</a></div>
+    </li>
+
+    {{end}}
+  </ul>
+</div>
+{{template "footer.tmpl"}}

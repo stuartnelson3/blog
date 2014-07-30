@@ -1,0 +1,10 @@
+{{template "header.tmpl"}}
+<header>
+  <a href="/">Stuart Nelson</a>
+</header>
+<div class="post mt2">
+  <div class="date">{{.CreatedAt}}</div>
+  <h1>{{.Title}}</h1>
+  <div>{{.Body}}</div>
+</div>
+{{template "footer.tmpl"}}
