@@ -20,13 +20,7 @@ func main() {
 		port  = flag.String("p", "3000", "address to bind the server on")
 		dev   = flag.Bool("dev", false, "enable/disable dev mode")
 		posts = allPosts()
-		t, _  = template.ParseFiles(
-			"./templates/header.tmpl",
-			"./templates/footer.tmpl",
-			"./templates/show.tmpl",
-			"./templates/index.tmpl",
-			"./templates/new.tmpl",
-		)
+		t, _  = template.ParseGlob("./templates/*.tmpl")
 	)
 	flag.Parse()
 
