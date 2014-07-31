@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -27,6 +28,24 @@ func main() {
 	if *dev {
 		mux.Get("/new_post", func(w http.ResponseWriter, r *http.Request) {
 			t.ExecuteTemplate(w, "new.tmpl", nil)
+		})
+		mux.Post("/upload", func(w http.ResponseWriter, r *http.Request) {
+			file, header, err := r.FormFile("file")
+			if err != nil {
+				http.Error(w, err.Error(), 500)
+				return
+			}
+			path := "./public/img/" + header.Filename
+			img, err := os.Create(path)
+			if err != nil {
+				http.Error(w, err.Error(), 500)
+				return
+			}
+			defer img.Close()
+
+			io.Copy(img, file)
+			w.Header().Set("Content-Type", "application/json")
+			w.Write([]byte(path))
 		})
 		mux.Post("/new_post", func(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(r.FormValue("title"))
