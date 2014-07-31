@@ -36,7 +36,7 @@ $(document).on('drop', 'textarea', function(e) {
   request.open("POST", "/upload");
   request.onloadend = function(e) {
     var resp = e.currentTarget.response;
-    // Update the cursor text with the correct path
+    // Update the text with the correct path for the image.
     t.value = t.value.replace(/\.\.\./, resp.slice(1));
     $(t).keyup();
   };
