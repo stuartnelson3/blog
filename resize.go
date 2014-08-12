@@ -42,8 +42,7 @@ func CreateImage(file multipart.File, header *multipart.FileHeader) (string, err
 	if b := decodedImage.Bounds(); b.Dx() > 600 {
 		scale := float64(600) / float64(b.Dx())
 		width, height := Scale(b, scale)
-
-		decodedImage = resize.Resize(uint(width), uint(height), decodedImage, resize.Lanczos3)
+		decodedImage = resize.Resize(width, height, decodedImage, resize.Lanczos3)
 	}
 
 	jpeg.Encode(img, decodedImage, nil)
