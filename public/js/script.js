@@ -13,12 +13,11 @@ ws.onmessage = function(e) {
   $('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 };
 
-function addImageMarkdown(e, altText, imagePath) {
+function addImageMarkdown(e, altText) {
   var startPos = e.selectionStart;
   var endPos = e.selectionEnd;
   e.value = e.value.substring(0, startPos)
-  + "![" + altText + "](" + imagePath + ")"
-  + "\r\n"
+  + "![" + altText + "]()\r\n"
   + e.value.substring(endPos, e.value.length);
 }
 
@@ -29,7 +28,7 @@ $(document).on('drop', 'textarea', function(e) {
     var f = dt.files[i];
 
     t = e.currentTarget;
-    addImageMarkdown(t, f.name, " ... ");
+    addImageMarkdown(t, f.name);
 
     var fd = new FormData();
     fd.append("file", f);
@@ -42,9 +41,9 @@ $(document).on('drop', 'textarea', function(e) {
       return function(e) {
         var resp = e.currentTarget.response;
         // Update the text with the correct path for the image.
-        var re = new RegExp("\\[" + filename + "\\]\\((\\s\\.\\.\\.\\s)\\)");
-        t.value = t.value.replace(re, function($1, $2) {
-          return $1.replace($2, resp.slice(1));
+        var re = new RegExp("\\[" + filename + "\\]\\(\\)");
+        t.value = t.value.replace(re, function($1) {
+          return $1.replace("()", "("+resp.slice(1)+")");
         });
         $(t).keyup();
       };
