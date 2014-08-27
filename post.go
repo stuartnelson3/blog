@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"html/template"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -9,15 +10,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/russross/blackfriday"
+	bf "github.com/russross/blackfriday"
 )
 
 type Post struct {
-	Title     string `json:"title"`
-	Slug      string `json:"slug"`
-	CreatedAt string `json:"createdAt"`
-	Body      string `json:"body"`
-	Mtime     int64  `json:"mtime"`
+	Title     string        `json:"title"`
+	Slug      string        `json:"slug"`
+	CreatedAt string        `json:"createdAt"`
+	Body      template.HTML `json:"body"`
+	Mtime     int64         `json:"mtime"`
 }
 
 func allPosts() []*Post {
@@ -57,9 +58,15 @@ func (a ByMtime) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a ByMtime) Less(i, j int) bool { return a[i].Mtime > a[j].Mtime }
 
 func CreatePost(title, body string) (*Post, error) {
+	r := bf.HtmlRenderer(
+		bf.HTML_HREF_TARGET_BLANK|bf.HTML_GITHUB_BLOCKCODE,
+		"",
+		"",
+	)
+	ext := bf.EXTENSION_NO_INTRA_EMPHASIS | bf.EXTENSION_FENCED_CODE | bf.EXTENSION_STRIKETHROUGH | bf.EXTENSION_LAX_HTML_BLOCKS
 	p := &Post{
 		Title:     title,
-		Body:      string(blackfriday.MarkdownCommon([]byte(body))),
+		Body:      template.HTML(string(bf.Markdown([]byte(body), r, ext))),
 		Slug:      CreateSlug(title),
 		CreatedAt: time.Now().Format("Jan 2 2006"),
 		Mtime:     time.Now().Unix(),

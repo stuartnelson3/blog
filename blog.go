@@ -3,10 +3,10 @@ package main
 import (
 	"errors"
 	"flag"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
-	"text/template"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/pat"
