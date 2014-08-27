@@ -27,7 +27,7 @@ $(document).on('drop', 'textarea', function(e) {
   for (var i = 0; i < dt.files.length; i++) {
     var f = dt.files[i];
 
-    t = e.currentTarget;
+    var t = e.currentTarget;
     addImageMarkdown(t, f.name);
 
     var fd = new FormData();
