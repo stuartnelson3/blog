@@ -59,7 +59,7 @@ func (a ByMtime) Less(i, j int) bool { return a[i].Mtime > a[j].Mtime }
 
 func CreatePost(title, body string) (*Post, error) {
 	r := bf.HtmlRenderer(
-		bf.HTML_HREF_TARGET_BLANK|bf.HTML_GITHUB_BLOCKCODE,
+		bf.HTML_HREF_TARGET_BLANK,
 		"",
 		"",
 	)
