@@ -14,6 +14,7 @@ import (
 )
 
 func CreateImage(file multipart.File, header *multipart.FileHeader) (string, error) {
+	// get path from s3
 	path := "./public/img/" + header.Filename
 	img, err := os.Create(path)
 	if err != nil {
@@ -22,6 +23,8 @@ func CreateImage(file multipart.File, header *multipart.FileHeader) (string, err
 	defer img.Close()
 
 	var decodedImage image.Image
+	// will be an upload
+	// is there a way to decode the image as it's being written to s3
 	switch filepath.Ext(header.Filename) {
 	case ".jpg", ".jpeg":
 		decodedImage, err = jpeg.Decode(file)
@@ -32,7 +35,7 @@ func CreateImage(file multipart.File, header *multipart.FileHeader) (string, err
 		io.Copy(img, file)
 		return path, nil
 	default:
-		return "", errors.New("Bad filetype")
+		return "", errors.New("bad filetype")
 	}
 
 	if err != nil {

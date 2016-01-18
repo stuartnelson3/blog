@@ -2,7 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -22,14 +24,17 @@ type Post struct {
 }
 
 func allPosts() []*Post {
+	// replace this with db stuff
 	paths, _ := filepath.Glob("posts/*.json")
 	posts := make([]*Post, len(paths))
 	for i, path := range paths {
 		post := &Post{}
 		f, err := os.Open(path)
 		if err != nil {
+			log.Printf("error opening file: %v", err)
 			continue
 		}
+
 		json.NewDecoder(f).Decode(post)
 		posts[i] = post
 		f.Close()
@@ -39,15 +44,15 @@ func allPosts() []*Post {
 }
 
 func findPost(slug string) (*Post, error) {
+	// replace this with db stuff
 	f, err := os.Open("./posts/" + slug + ".json")
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error opening file: %v", err)
 	}
 	defer f.Close()
 
 	post := &Post{}
 	json.NewDecoder(f).Decode(post)
-
 	return post, nil
 }
 
@@ -72,6 +77,7 @@ func CreatePost(title, body string) (*Post, error) {
 		Mtime:     time.Now().Unix(),
 	}
 
+	// replace save json with a function to commit to db
 	err := p.SaveJson()
 	return p, err
 }
