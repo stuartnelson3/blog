@@ -1,0 +1,46 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"path": "github.com/gorilla/context",
+			"revision": "1c83b3eabd45b6d76072b66b746c20815fb2872d",
+			"revisionTime": "2015-08-19T22:12:45-07:00"
+		},
+		{
+			"path": "github.com/gorilla/handlers",
+			"revision": "1467d04c2cea3563bfe156b7b0014864adce02b6",
+			"revisionTime": "2015-07-05T00:25:59-07:00"
+		},
+		{
+			"path": "github.com/gorilla/mux",
+			"revision": "49c024275504f0341e5a9971eb7ba7fa3dc7af40",
+			"revisionTime": "2015-09-08T09:58:39-07:00"
+		},
+		{
+			"path": "github.com/gorilla/pat",
+			"revision": "ae2e162c4b2ae96aa66b596b2c18f17834299ed0",
+			"revisionTime": "2013-12-04T23:16:17-08:00"
+		},
+		{
+			"path": "github.com/gorilla/websocket",
+			"revision": "3986be78bf859e01f01af631ad76da5b269d270c",
+			"revisionTime": "2015-12-15T21:10:58-08:00"
+		},
+		{
+			"path": "github.com/nfnt/resize",
+			"revision": "ce86eacf2078a173b62f76c703abad3771d51678",
+			"revisionTime": "2015-03-27T19:50:42+01:00"
+		},
+		{
+			"path": "github.com/russross/blackfriday",
+			"revision": "3a90da10e373e33f9d809d0324741aade90b7299",
+			"revisionTime": "2015-04-05T09:28:21+03:00"
+		},
+		{
+			"path": "github.com/shurcooL/sanitized_anchor_name",
+			"revision": "8e87604bec3c645a4eeaee97dfec9f25811ff20d",
+			"revisionTime": "2015-02-25T19:22:00-08:00"
+		}
+	]
+}
